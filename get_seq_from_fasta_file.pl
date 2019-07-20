@@ -22,7 +22,6 @@ while(<IN>){
     }else{
         $fasta{$fasta_gene_id} = $_;
     }
-	#print $fasta{"MedsaG0000065333.01.T01"};
 }
 close IN;
 
@@ -32,14 +31,12 @@ while(<IN>){
     chomp;
     push(@list,$_);
 }
-#print @list;
+
 close IN;
 
 open(OUT,">$out");
 foreach my $h (@list){
-    #print $h;
     foreach my $g (keys %fasta){
-        #print $g;
         if ($g =~ /$h/){
             my $gene_id = $g;
             print OUT "$gene_id\n$fasta{$gene_id}\n";
